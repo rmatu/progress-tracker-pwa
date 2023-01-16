@@ -1,3 +1,6 @@
+import withPWA from "next-pwa";
+import runtimeCaching from "next-pwa/cache.js";
+
 // @ts-check
 /**
  * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
@@ -14,4 +17,10 @@ const config = {
     defaultLocale: "en",
   },
 };
-export default config;
+
+const nextConfig = withPWA({
+  dest: "public",
+  runtimeCaching,
+})(config);
+
+export default nextConfig;
