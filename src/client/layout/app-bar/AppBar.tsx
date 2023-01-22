@@ -11,8 +11,12 @@ const AppBar = () => {
   const router = useRouter();
 
   return (
-    <div className="pt-safe fixed top-0 left-0 z-20 w-full bg-zinc-900">
-      <header className="px-safe border-b bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
+    <div
+      className="pt-safe supports-backdrop-blur:bg-white/95 fixed
+        top-0 left-0 z-20  w-full bg-white backdrop-blur-lg transition-colors duration-500
+      dark:border-slate-50/[0.06] dark:bg-slate-900/75 lg:z-50 lg:border-b lg:border-slate-900/10"
+    >
+      <header className="border-b border-slate-900/10  dark:border-slate-300/10">
         <div className="mx-auto flex h-20 max-w-screen-lg items-center justify-between px-6">
           <Link href="/">
             <Logo withText />

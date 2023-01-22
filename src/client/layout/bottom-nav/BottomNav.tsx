@@ -6,7 +6,7 @@ const BottomNav = () => {
 
   return (
     <div className="sm:hidden">
-      <nav className="pb-safe fixed bottom-0 w-full border-t bg-zinc-100 dark:border-zinc-800 dark:bg-zinc-900">
+      <nav className=" pb-safe bg-zinc-100  dark:border-zinc-800 dark:bg-zinc-900 fixed bottom-0 w-full border-t border-slate-900/10 bg-background-main dark:border-slate-300/10">
         <div className="mx-auto flex h-16 max-w-md items-center justify-around px-6">
           {links.map(({ href, label, icon }) => (
             <Link key={label} href={href}>
@@ -18,7 +18,7 @@ const BottomNav = () => {
                 }`}
               >
                 {icon}
-                <span className="text-xs text-zinc-600 dark:text-zinc-400">
+                <span className="text-zinc-600 dark:text-zinc-400 text-xs">
                   {label}
                 </span>
               </p>

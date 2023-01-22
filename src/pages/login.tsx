@@ -7,7 +7,10 @@ const LoginPage: NextPage = () => {
 
   return (
     <Page>
-      <button onClick={handleSignIn}>Sign in</button>
+      <button onClick={handleSignIn}>
+        Sign in doisajd oisajdo isajdo isajodi sajp oidsajpid sajpi dasjipd
+        asjpidsa jpidsa{" "}
+      </button>
     </Page>
   );
 };

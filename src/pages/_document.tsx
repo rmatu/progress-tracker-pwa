@@ -72,7 +72,7 @@ export default function Document() {
           content="https://yourdomain.com/icons/apple-touch-icon.png"
         />
       </Head>
-      <body>
+      <body className="bg-background-main text-white">
         <Main />
         <NextScript />
       </body>
