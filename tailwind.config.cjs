@@ -8,6 +8,7 @@ module.exports = {
     colors: {
       nav: "#202123",
       "background-main": "#10172a",
+      primary: "#FD9935",
     },
     extend: {
       colors: {

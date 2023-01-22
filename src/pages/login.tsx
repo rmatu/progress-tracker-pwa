@@ -1,3 +1,4 @@
+import { Button } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import { signIn } from "next-auth/react";
 import { Page } from "../client/layout/page";
@@ -7,10 +8,14 @@ const LoginPage: NextPage = () => {
 
   return (
     <Page>
-      <button onClick={handleSignIn}>
-        Sign in doisajd oisajdo isajdo isajodi sajp oidsajpid sajpi dasjipd
-        asjpidsa jpidsa{" "}
-      </button>
+      <Button
+        onClick={handleSignIn}
+        colorScheme="blue"
+        variant="outline"
+        _hover={{ background: "rgba(144, 205, 244, 0.12);" }}
+      >
+        Login
+      </Button>
     </Page>
   );
 };

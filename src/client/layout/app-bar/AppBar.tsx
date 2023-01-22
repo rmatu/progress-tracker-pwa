@@ -1,14 +1,16 @@
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Logo } from "../../components/logo";
 
-const links = [
-  { label: "Story", href: "/story" },
-  { label: "Recipes", href: "/recipes" },
-];
+const activeClass = "border-b border-primary opacity-100";
+const nonActiveClass = "opacity-70";
 
 const AppBar = () => {
-  const router = useRouter();
+  const { pathname } = useRouter();
+  const { data: sessionData } = useSession();
+
+  const handleLogout = () => void signOut();
 
   return (
     <div
@@ -22,24 +24,30 @@ const AppBar = () => {
             <Logo withText />
           </Link>
 
-          <nav className="flex items-center space-x-6">
-            <div className="hidden sm:block">
-              <div className="flex items-center space-x-6">
-                {links.map(({ label, href }) => (
-                  <Link key={label} href={href}>
-                    <p
-                      className={`text-sm ${
-                        router.pathname === href
-                          ? "text-indigo-500 dark:text-indigo-400"
-                          : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
-                      }`}
-                    >
-                      {label}
-                    </p>
-                  </Link>
-                ))}
-              </div>
-            </div>
+          <nav className="hidden items-center space-x-6 sm:block">
+            {!sessionData && (
+              <>
+                <Link href="/login">
+                  <button
+                    className={`border-b pb-1 hover:opacity-100 ${
+                      pathname === "/login" ? activeClass : nonActiveClass
+                    }`}
+                  >
+                    Login
+                  </button>
+                </Link>
+                <Link
+                  href="register"
+                  className={`border-b pb-1 hover:opacity-100 ${
+                    pathname === "/register" ? activeClass : nonActiveClass
+                  }`}
+                >
+                  <button>Register</button>
+                </Link>
+              </>
+            )}
+
+            {sessionData && <button onClick={handleLogout}>Log out</button>}
           </nav>
         </div>
       </header>

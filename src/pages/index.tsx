@@ -21,14 +21,12 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     };
   }
 
-  console.log({ session });
-
   return {
     props: { session },
   };
 };
 
-const Home: NextPage<{ access_token: string }> = ({ access_token }) => {
+const Home: NextPage<{ access_token: string }> = () => {
   return (
     // <main>Start page</main>
 
