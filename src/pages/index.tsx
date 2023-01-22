@@ -1,10 +1,37 @@
+import type { GetServerSideProps } from "next";
 import { type NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
 
-const Home: NextPage = () => {
+import { getServerAuthSession } from "../server/auth";
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = await getServerAuthSession(ctx);
+
+  if (!session) {
+    return {
+      props: {
+        session,
+      },
+      redirect: {
+        destination: "login",
+        permanent: false,
+      },
+    };
+  }
+
+  console.log({ session });
+
+  return {
+    props: { session },
+  };
+};
+
+const Home: NextPage<{ access_token: string }> = ({ access_token }) => {
   return (
+    // <main>Start page</main>
+
     <>
       <Head>
         <title>Create T3 App</title>
