@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { Logo } from "../../components/logo";
 
 const activeClass = "border-b border-primary opacity-100";
-const nonActiveClass = "opacity-70";
+const nonActiveClass = "border-background-main opacity-70";
 
 const AppBar = () => {
   const { pathname } = useRouter();
@@ -29,7 +29,7 @@ const AppBar = () => {
               <>
                 <Link href="/login">
                   <button
-                    className={`border-b pb-1 hover:opacity-100 ${
+                    className={`bi border-b pb-1 hover:opacity-100 ${
                       pathname === "/login" ? activeClass : nonActiveClass
                     }`}
                   >
