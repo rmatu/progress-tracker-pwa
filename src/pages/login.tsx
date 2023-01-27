@@ -12,12 +12,33 @@ import {
   Text,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import type { NextPage } from "next";
+import type { GetServerSideProps, NextPage } from "next";
 import { signIn } from "next-auth/react";
 
 import { OAuthButtonGroup } from "../client/components/o-auth-providers";
 
 import { Page } from "../client/layout/page";
+import { getServerAuthSession } from "../server/auth";
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = await getServerAuthSession(ctx);
+
+  if (session) {
+    return {
+      props: {
+        session,
+      },
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: { session },
+  };
+};
 
 const LoginPage: NextPage = () => {
   const handleSignIn = () => void signIn();
@@ -70,7 +91,9 @@ const LoginPage: NextPage = () => {
               </Button>
             </HStack>
             <Stack spacing="6">
-              <Button variant="outline">Sign in</Button>
+              <Button variant="outline" onClick={handleSignIn}>
+                Sign in
+              </Button>
               <HStack>
                 <Divider />
                 <Text fontSize="sm" whiteSpace="nowrap" color="muted">

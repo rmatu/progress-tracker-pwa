@@ -12,9 +12,7 @@ const BottomNav = () => {
             <Link key={label} href={href}>
               <p
                 className={`flex h-full w-full flex-col items-center justify-center space-y-1 ${
-                  router.pathname === href
-                    ? "text-indigo-500 dark:text-indigo-400"
-                    : "text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50"
+                  router.pathname === href ? "opacity-100" : "opacity-70"
                 }`}
               >
                 {icon}
@@ -53,7 +51,7 @@ const links = [
   },
   {
     label: "Login",
-    href: "/story",
+    href: "/login",
     icon: (
       <svg
         viewBox="0 0 15 15"
@@ -71,7 +69,7 @@ const links = [
   },
   {
     label: "Register",
-    href: "/recipes",
+    href: "/register",
     icon: (
       <svg
         viewBox="0 0 15 15"
