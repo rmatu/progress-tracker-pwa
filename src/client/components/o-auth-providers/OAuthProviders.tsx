@@ -9,8 +9,10 @@ const providers = [
     icon: <DiscordIcon />,
     onClick: () => void signIn("discord"),
   },
-  { name: "GitHub", icon: <GitHubIcon boxSize="5" /> },
-  { name: "Twitter", icon: <TwitterIcon boxSize="5" /> },
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  { name: "GitHub", icon: <GitHubIcon boxSize="5" />, onClick: () => {} },
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  { name: "Twitter", icon: <TwitterIcon boxSize="5" />, onClick: () => {} },
 ];
 
 interface OAuthButtonGroupProps {
@@ -20,7 +22,7 @@ interface OAuthButtonGroupProps {
 export const OAuthButtonGroup: FC<OAuthButtonGroupProps> = ({
   setIsPageLoadingOnRedirect,
 }) => {
-  const handleClick = (onClick: () => void) => {
+  const handleClick = (onClick: () => undefined | void) => {
     onClick();
     setIsPageLoadingOnRedirect(true);
   };

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import styled, { keyframes } from "styled-components";
 
 const rotate360 = keyframes`
