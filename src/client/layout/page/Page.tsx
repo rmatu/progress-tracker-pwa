@@ -8,7 +8,7 @@ import { BottomNav } from "../bottom-nav";
 interface Props {
   title?: string;
   children: React.ReactNode;
-  center: boolean;
+  center?: boolean;
 }
 
 export const Page = ({
@@ -36,7 +36,7 @@ export const Page = ({
   </>
 );
 
-const Main = styled.div<{ center: boolean }>`
+const Main = styled.div<{ center?: boolean }>`
   ${({ center }) =>
     center &&
     css`
