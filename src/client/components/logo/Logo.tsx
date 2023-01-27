@@ -21,9 +21,7 @@ const Logo: FC<LogoProps> = ({ width = 50, height, withText = false }) => (
         fill="white"
       />
     </svg>
-    {withText && (
-      <p className="ml-3  text-white sm:text-sm ">Resolution Tracker</p>
-    )}
+    {withText && <p className="ml-3  text-white ">Resolution Tracker</p>}
   </div>
 );
 
