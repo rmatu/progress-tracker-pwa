@@ -1,5 +1,8 @@
 import Head from "next/head";
+import { useContext } from "react";
 import styled, { css } from "styled-components";
+import { LoadingOverlay } from "../../components/loadingOverlay";
+import { AppContext } from "../../context/AppContext";
 
 import { AppBar } from "../app-bar";
 
@@ -15,26 +18,30 @@ export const Page = ({
   title = "Resolution Tracker",
   children,
   center,
-}: Props) => (
-  <>
-    {title ? (
-      <Head>
-        <title>{title}</title>
-      </Head>
-    ) : null}
+}: Props) => {
+  const { isLoading } = useContext(AppContext);
 
-    <AppBar />
+  return (
+    <LoadingOverlay isLoading={isLoading}>
+      {title ? (
+        <Head>
+          <title>{title}</title>
+        </Head>
+      ) : null}
 
-    <Main
-      center={center}
-      className="px-safe mx-auto h-[calc(100vh)] max-w-screen-lg pt-20 pb-16 sm:pb-0"
-    >
-      {children}
-    </Main>
+      <AppBar />
 
-    <BottomNav />
-  </>
-);
+      <Main
+        center={center}
+        className="px-safe mx-auto h-[calc(100vh)] max-w-screen-lg pt-20 pb-16 sm:pb-0"
+      >
+        {children}
+      </Main>
+
+      <BottomNav />
+    </LoadingOverlay>
+  );
+};
 
 const Main = styled.div<{ center?: boolean }>`
   ${({ center }) =>

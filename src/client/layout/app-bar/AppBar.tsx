@@ -1,3 +1,4 @@
+import { Button } from "@chakra-ui/react";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -47,7 +48,7 @@ const AppBar = () => {
               </>
             )}
 
-            {sessionData && <button onClick={handleLogout}>Log out</button>}
+            {sessionData && <Button onClick={handleLogout}>Log out</Button>}
           </nav>
         </div>
       </header>
