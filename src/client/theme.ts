@@ -1,6 +1,6 @@
 import { defineStyleConfig, extendTheme } from "@chakra-ui/react";
 
-const colors = {
+export const colors = {
   nav: "#202123",
   "background-main": "#10172a",
   primary: "#FD9935",
