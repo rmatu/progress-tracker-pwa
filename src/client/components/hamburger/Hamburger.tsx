@@ -1,48 +1,50 @@
-import { AddIcon, HamburgerIcon } from "@chakra-ui/icons";
-import type { MenuItemProps } from "@chakra-ui/react";
+import { HamburgerIcon } from "@chakra-ui/icons";
 import {
   IconButton,
   Menu,
   MenuButton,
+  MenuDivider,
+  MenuGroup,
   MenuItem,
   MenuList,
 } from "@chakra-ui/react";
 import type { FC, MouseEventHandler } from "react";
+import { accountHamburgerItems, otherHamburgerItems } from "./constants";
 
 interface HamburgerProps {
   onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
-const hamburgerItems: (Omit<MenuItemProps, "value"> & {
-  value: "logout" | "test";
-})[] = [
-  {
-    icon: <AddIcon />,
-    value: "logout",
-    name: "Log Out",
-  },
-];
-
 export const Hamburger: FC<HamburgerProps> = ({ onClick }) => {
-  const menuItems = hamburgerItems.map(({ value, command, icon, name }) => (
-    <MenuItem
-      sx={{
-        display: "flex",
-        justifyContent: "flex-end",
+  const menuItems = accountHamburgerItems.map(
+    ({ value, command, icon, name }) => (
+      <MenuItem
+        pl={6}
+        key={value}
+        icon={icon}
+        command={command}
+        value={value}
+        onClick={onClick}
+      >
+        {name}
+      </MenuItem>
+    )
+  );
 
-        "> span": {
-          maxWidth: "fit-content",
-        },
-      }}
-      key={value}
-      icon={icon}
-      command={command}
-      value={value}
-      onClick={onClick}
-    >
-      {name}
-    </MenuItem>
-  ));
+  const otherMenuItems = otherHamburgerItems.map(
+    ({ value, command, icon, name }) => (
+      <MenuItem
+        pl={6}
+        key={value}
+        icon={icon}
+        command={command}
+        value={value}
+        onClick={onClick}
+      >
+        {name}
+      </MenuItem>
+    )
+  );
 
   return (
     <Menu>
@@ -60,13 +62,11 @@ export const Hamburger: FC<HamburgerProps> = ({ onClick }) => {
         _expanded={{ bg: "rgba(144, 205, 244, 0.12)" }}
       />
       <MenuList
-        maxW={"90vw"}
         className="!shadow-lg"
         sx={{
-          minWidth: "140px",
           borderColor: "rgb(248 250 252 / 0.06)",
           background: "rgb(30 41 59/var(--tw-bg-opacity))",
-          "> button": {
+          button: {
             backgroundColor: "rgb(30 41 59/var(--tw-bg-opacity))",
 
             ":hover": {
@@ -75,7 +75,9 @@ export const Hamburger: FC<HamburgerProps> = ({ onClick }) => {
           },
         }}
       >
-        {menuItems}
+        <MenuGroup title="Account">{menuItems}</MenuGroup>
+        <MenuDivider />
+        <MenuGroup title="Other">{otherMenuItems}</MenuGroup>
       </MenuList>
     </Menu>
   );
