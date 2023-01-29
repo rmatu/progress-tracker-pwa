@@ -33,7 +33,7 @@ export const Page = ({
 
       <Main
         center={center}
-        className="px-safe mx-auto h-[calc(100vh)] max-w-screen-lg pt-20 pb-16 sm:pb-0"
+        className="px-safe mx-auto h-[calc(100vh)] max-w-screen-lg pt-20 pb-20 sm:pb-0"
       >
         {children}
       </Main>

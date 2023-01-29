@@ -14,8 +14,7 @@ import {
 } from "@chakra-ui/react";
 import type { GetServerSideProps, NextPage } from "next";
 import { signIn } from "next-auth/react";
-import { useContext, useState } from "react";
-import { LoadingOverlay } from "../client/components/loadingOverlay";
+import { useContext } from "react";
 
 import { OAuthButtonGroup } from "../client/components/o-auth-providers";
 import { AppContext } from "../client/context/AppContext";
@@ -46,9 +45,10 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 const LoginPage: NextPage = () => {
   const { setIsLoading } = useContext(AppContext);
 
+  // https://github.com/react-hook-form/react-hook-form/discussions/8622?sort=old#discussioncomment-3950935
   const handleSignIn = () => {
     setIsLoading(true);
-    void signIn();
+    void signIn("discord");
   };
 
   return (
@@ -102,9 +102,9 @@ const LoginPage: NextPage = () => {
               <Button variant="outline" onClick={handleSignIn}>
                 Sign in
               </Button>
-              <HStack>
+              <HStack opacity="0.5">
                 <Divider />
-                <Text fontSize="sm" whiteSpace="nowrap" color="muted">
+                <Text fontSize="sm" whiteSpace="nowrap">
                   or continue with
                 </Text>
                 <Divider />
