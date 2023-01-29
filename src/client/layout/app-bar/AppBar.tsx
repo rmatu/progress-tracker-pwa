@@ -1,7 +1,11 @@
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import type { MouseEventHandler } from "react";
+import { useContext } from "react";
+import { Hamburger } from "../../components/hamburger";
 import { Logo } from "../../components/logo";
+import { AppContext } from "../../context/AppContext";
 
 const activeClass = "border-b border-primary opacity-100";
 const nonActiveClass = "border-background-main opacity-70";
@@ -9,8 +13,18 @@ const nonActiveClass = "border-background-main opacity-70";
 const AppBar = () => {
   const { pathname } = useRouter();
   const { data: sessionData } = useSession();
+  const { setIsLoading } = useContext(AppContext);
 
-  const handleLogout = () => void signOut();
+  const handleLogout = () => {
+    setIsLoading(true);
+    void signOut();
+  };
+
+  const handleHamburgerClick: MouseEventHandler<HTMLButtonElement> = (e) => {
+    const { value } = e.target as HTMLButtonElement;
+
+    if (value === "logout") handleLogout();
+  };
 
   return (
     <div
@@ -46,9 +60,9 @@ const AppBar = () => {
                 </Link>
               </>
             )}
-
-            {sessionData && <button onClick={handleLogout}>Log out</button>}
           </nav>
+
+          {sessionData && <Hamburger onClick={handleHamburgerClick} />}
         </div>
       </header>
     </div>

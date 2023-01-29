@@ -1,5 +1,4 @@
 import type { GetServerSideProps, NextPage } from "next";
-import React from "react";
 import { Page } from "../client/layout/page";
 import { getServerAuthSession } from "../server/auth";
 
