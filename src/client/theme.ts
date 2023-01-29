@@ -4,7 +4,7 @@ export const colors = {
   nav: "#202123",
   "background-main": "#10172a",
   primary: "#FD9935",
-  "modal-background": "rgb(30 41 59/var(--tw-bg-opacity))",
+  "background-secondary": "rgb(30 41 59)",
 };
 
 const Input = defineStyleConfig({

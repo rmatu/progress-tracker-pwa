@@ -9,14 +9,14 @@ import {
   MenuList,
 } from "@chakra-ui/react";
 import type { FC, MouseEventHandler } from "react";
-import { accountHamburgerItems, otherHamburgerItems } from "./constants";
+import { actionHamburgerItems, otherHamburgerItems } from "./constants";
 
 interface HamburgerProps {
   onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
 export const Hamburger: FC<HamburgerProps> = ({ onClick }) => {
-  const menuItems = accountHamburgerItems.map(
+  const actionItems = actionHamburgerItems.map(
     ({ value, command, icon, name }) => (
       <MenuItem
         pl={6}
@@ -47,7 +47,7 @@ export const Hamburger: FC<HamburgerProps> = ({ onClick }) => {
   );
 
   return (
-    <Menu>
+    <Menu placement="bottom-end">
       <MenuButton
         as={IconButton}
         aria-label="Options"
@@ -75,7 +75,7 @@ export const Hamburger: FC<HamburgerProps> = ({ onClick }) => {
           },
         }}
       >
-        <MenuGroup title="Account">{menuItems}</MenuGroup>
+        <MenuGroup title="Actions">{actionItems}</MenuGroup>
         <MenuDivider />
         <MenuGroup title="Other">{otherMenuItems}</MenuGroup>
       </MenuList>

@@ -3,16 +3,14 @@ type Route = {
   icon?: JSX.Element;
   name: string;
   id: string;
-  showOnLogIn: boolean;
 };
 type Routes = Route[];
 
 export const navRoutes: Routes = [
-  { id: "login-page", name: "Login", path: "/login", showOnLogIn: true },
+  { id: "login-page", name: "Login", path: "/login" },
   {
     id: "register-page",
     name: "Register",
     path: "/register",
-    showOnLogIn: false,
   },
 ];

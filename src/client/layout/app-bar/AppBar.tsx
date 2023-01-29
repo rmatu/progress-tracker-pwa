@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import type { MouseEventHandler } from "react";
 import { useContext } from "react";
 import { Hamburger } from "../../components/hamburger";
+import type { HamburgerActionTypes } from "../../components/hamburger/constants";
 import { Logo } from "../../components/logo";
 import { AppContext } from "../../context/AppContext";
 
@@ -11,7 +12,7 @@ const activeClass = "border-b border-primary opacity-100";
 const nonActiveClass = "border-background-main opacity-70";
 
 const AppBar = () => {
-  const { pathname } = useRouter();
+  const { pathname, push } = useRouter();
   const { data: sessionData } = useSession();
   const { setIsLoading } = useContext(AppContext);
 
@@ -21,9 +22,10 @@ const AppBar = () => {
   };
 
   const handleHamburgerClick: MouseEventHandler<HTMLButtonElement> = (e) => {
-    const { value } = e.target as HTMLButtonElement;
+    const value = (e.target as HTMLButtonElement).value as HamburgerActionTypes;
 
     if (value === "logout") handleLogout();
+    if (value === "add-resolution") void push("/add-resolution");
   };
 
   return (

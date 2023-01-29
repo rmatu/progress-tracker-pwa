@@ -2,13 +2,13 @@ import { AddIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 import type { MenuItemProps } from "@chakra-ui/react";
 import { LogoutIcon } from "../icons";
 
-export const accountHamburgerItems: (Omit<MenuItemProps, "value"> & {
-  value: "user" | "test";
+export const actionHamburgerItems: (Omit<MenuItemProps, "value"> & {
+  value: "add-resolution" | "test";
 })[] = [
   {
     icon: <AddIcon />,
-    value: "user",
-    name: "User",
+    value: "add-resolution",
+    name: "Add Resolution",
   },
   {
     icon: <ExternalLinkIcon />,
@@ -26,3 +26,7 @@ export const otherHamburgerItems: (Omit<MenuItemProps, "value"> & {
     name: "Log Out",
   },
 ];
+
+export type HamburgerActionTypes =
+  | (typeof actionHamburgerItems)[number]["value"]
+  | (typeof otherHamburgerItems)[number]["value"];
