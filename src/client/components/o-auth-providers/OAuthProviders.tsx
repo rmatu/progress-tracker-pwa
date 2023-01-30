@@ -19,7 +19,7 @@ interface OAuthButtonGroupProps {
   setIsPageLoadingOnRedirect: Dispatch<SetStateAction<boolean>>;
 }
 
-export const OAuthButtonGroup: FC<OAuthButtonGroupProps> = ({
+const OAuthButtonGroup: FC<OAuthButtonGroupProps> = ({
   setIsPageLoadingOnRedirect,
 }) => {
   const handleClick = (onClick: () => undefined | void) => {
@@ -40,3 +40,5 @@ export const OAuthButtonGroup: FC<OAuthButtonGroupProps> = ({
     </ButtonGroup>
   );
 };
+
+export { OAuthButtonGroup };

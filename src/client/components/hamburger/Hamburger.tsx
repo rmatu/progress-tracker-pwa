@@ -15,7 +15,7 @@ interface HamburgerProps {
   onClick?: MouseEventHandler<HTMLButtonElement>;
 }
 
-export const Hamburger: FC<HamburgerProps> = ({ onClick }) => {
+const Hamburger: FC<HamburgerProps> = ({ onClick }) => {
   const actionItems = actionHamburgerItems.map(
     ({ value, command, icon, name }) => (
       <MenuItem
@@ -82,3 +82,5 @@ export const Hamburger: FC<HamburgerProps> = ({ onClick }) => {
     </Menu>
   );
 };
+
+export { Hamburger };
