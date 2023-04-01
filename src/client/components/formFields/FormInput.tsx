@@ -11,8 +11,9 @@ import { useController } from "react-hook-form";
 const FormInput = <T extends FieldValues>({
   control,
   name,
+  label,
   placeholder,
-}: UseControllerProps<T> & InputProps) => {
+}: UseControllerProps<T> & InputProps & { label?: string }) => {
   const {
     field: { onChange, onBlur, value, ref },
     fieldState: { error },
@@ -24,7 +25,7 @@ const FormInput = <T extends FieldValues>({
 
   return (
     <FormControl isInvalid={!!error}>
-      <FormLabel htmlFor={name}>{name}</FormLabel>
+      <FormLabel htmlFor={name}>{label || name}</FormLabel>
       <Input
         disabled={isSubmitting}
         name={name}
