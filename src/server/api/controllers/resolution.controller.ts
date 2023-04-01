@@ -1,3 +1,4 @@
+import { TRPCError } from "@trpc/server";
 import {
   CreateResolutionInput,
   FilterQueryInput,
@@ -31,7 +32,13 @@ export const createResolutionHandler = async ({
       data: resolution,
     };
   } catch (err: any) {
-    console.log(err);
+    if (err.code === "P2002") {
+      throw new TRPCError({
+        code: "CONFLICT",
+        message: "Post with that title already exists",
+      });
+    }
+    throw err;
   }
 };
 
